@@ -34,6 +34,3 @@ Logrando asi la funcionalidad del sitio web.
 
 visita http://localhost:8000 para ver la aplicación en funcionamiento.
 
-## Contribuciones
-
-¡Las contribuciones son bienvenidas! Si encuentras algún error o tienes alguna sugerencia, por favor abre un issue o envía un pull request.
