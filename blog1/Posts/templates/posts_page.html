@@ -1,17 +1,165 @@
 <!DOCTYPE html>
+{% load static %}
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Posts Page</title>
+    <title>Blog Django</title>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-o+2w26unqJzC2jLV8e9Vqbc/3gcPL6PnZix1iZZr5OouHQX6WZKc53jmyF24wRmWGiPvNNGLVw7jVUrA4SrjhA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <style>
+        .navbar-dark .navbar-nav .nav-link {
+            color: rgb(185, 78, 7);
+            font-family: 'Roboto', sans-serif;
+        }
+
+        .navbar-dark .navbar-nav .nav-link:hover {
+            color: white;
+        }
+
+        .navbar-dark .navbar-brand {
+            color: rgb(247, 148, 83);
+            font-family: 'Roboto', sans-serif;
+        }
+
+        .navbar-dark .navbar-toggler-icon {
+            background-color: rgb(185, 78, 7);
+        }
+
+        .navbar-dark .navbar-toggler {
+            border-color: rgb(185, 78, 7);
+        }
+
+        .navbar-dark .navbar-toggler:focus,
+        .navbar-dark .navbar-toggler:hover {
+            background-color: orange;
+        }
+
+        body {
+            background-color: black;
+            color: white;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        .card-title,
+        .card-text,
+        .card-body {
+            font-family: 'Roboto', sans-serif;
+        }
+    </style>
 </head>
+
 <body>
-    <h1>Posts</h1>
-    <ul>
-        {% for post in posts %}
-        <li><a href="{% url 'detalle_articulo' post.slug %}">{{ post.title }}</a></li>
-        {% endfor %}
-    </ul>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#" style="font-size: 24px; padding-left: 20px; padding-right: 20px;">Posts</a>
+
+    </nav>
+
+
+    <div class="container-fluid">
+        <div class="row mt-4">
+            <div class="col">
+                <a href="#" class="btn btn-primary btn-block mb-2">Agregar Post</a>
+                <a href="#" class="btn btn-primary btn-block mb-2">Categorías</a>
+                <a href="#" class="btn btn-primary btn-block mb-2">Artículos</a>
+                <a href="#" class="btn btn-primary btn-block mb-2">Autores</a>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+    <div class="container mt-4">
+        <form method="POST">
+            {% csrf_token %}
+            <div class="mb-3">
+                <label for="title" class="form-label">Título</label>
+                <input type="text" class="form-control" id="title" name="title" style="font-size: 24px;">
+
+
+
+
+            </div>
+            <div class="mb-3">
+                <label for="content" class="form-label">Contenido</label>
+                <textarea class="form-control" id="content" name="content"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Publicar</button>
+        </form>
+    </div>
+
+    <div class="container mt-4">
+        <div class="row row-cols-auto">
+            <div class="col">
+                <div class="card" style="width: 21rem;">
+                    <img src="{% static 'img/image1.jpg' %}" class="card-img-top" alt="Image 1">
+                    <div class="card-body">
+                        <h5 class="card-title">LIBROS</h5>
+                        <p class="card-text">Sección de lectura, donde están los mejores libros de autores
+                            conocidos y novatos pero con grandes historias para contar.</p>
+                        <p>Comentario: No me gustó, parecía más interesante.</p>
+                    </div>
+                </div>
+                <div class="mt-3">
+                    <h5><i class="fas fa-user"></i> Usuarios</h5>
+                    <img src="{% static 'img/article1.jpg' %}" class="img-fluid" alt=" ">
+                    <p>800 usuarios</p>
+                </div>
+                
+            </div>
+            <div class="col">
+                <div class="card" style="width: 20rem;">
+                    <img src="{% static 'img/image2.jpg' %}" class="card-img-top" alt="Image 2">
+                    <div class="card-body">
+                        <h5 class="card-title">COMIDAS</h5>
+                        <p class="card-text">Las comidas más ricas de las cuidades del mundo y las especialidades
+                            de prestigiosos cheff.</p>
+                        <p>Comentario: Una maravilla, lo recomiendo.</p>
+                    </div>
+                </div>
+                <div class="mt-3">
+                    <h5>Comentarios</h5>
+                    <img src="{% static 'img/article2.jpg' %}" class="img-fluid" alt=" ">
+                    <p>326 comentarios.</p>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card" style="width: 20rem;">
+                    <img src="{% static 'img/image3.jpg' %}" class="card-img-top" alt="Image 3">
+                    <div class="card-body">
+                        <h5 class="card-title">VIAJES</h5>
+                        <p class="card-text">Conocé los paisajes mas hermosos del mundo.</p>
+                        <p>Comentario: Me faltó tiempo, pero volveré.</p>
+                    </div>
+                </div>
+                <div class="mt-3">
+                    <h5>Vistas</h5>
+                    <img src="{% static 'img/article3.jpg' %}" class="img-fluid" alt=" ">
+                   <p>523 vistas</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
 </body>
+
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+<script src="https://cdn.tiny.cloud/1/YOUR_API_KEY/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+
+<script>
+    tinymce.init({
+        selector: 'textarea', // Aplica TinyMCE a todos los elementos <textarea>
+        plugins: 'autolink lists link image',
+        toolbar: 'undo redo | formatselect | bold italic | alignleft aligncenter alignright | bullist numlist outdent indent | link image',
+        // Configuración adicional si la necesitas
+    });
+</script>
+
 </html>
