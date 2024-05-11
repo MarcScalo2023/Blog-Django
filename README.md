@@ -17,16 +17,22 @@ Logrando asi la funcionalidad del sitio web.
 2.Dependencias del proyecto:
 
     
-    pip install -r requirements.txt
+pip install django 
+pip freeze
+python manage.py startapp
+
     
 
-## Configuración
+## Configuración de entorno virtual
 
-    
-    cp .env.example .env
+    pip install virtualenv
+    virtualenv env 
+    cd env
+    cd scripts
+    scripts/activate
     
 
-3.Variables de entorno
+3.Ejecutar por terminal
 
     
     python manage.py runserver
