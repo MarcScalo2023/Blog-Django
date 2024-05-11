@@ -1,1 +1,28 @@
-
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'blog/style.css' %}">
+</head>
+<body>
+    <main>
+        <h1>Blog con Django</h1>
+        <h2></h2>
+        {% block content %}{% endblock %}
+    </main>
+    {% block scripts %}
+        <script src="{% static 'tinymce/tinymce.min.js' %}"></script>
+        <script>
+            tinymce.init({
+                selector:'textarea',
+                plugins: 'link',
+                menubar: 'insert',
+                toolbar: 'undo redo | formatselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link',
+            });
+        </script>
+    {% endblock %}
+</body>
+</html>
